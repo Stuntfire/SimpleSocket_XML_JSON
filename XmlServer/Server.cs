@@ -24,21 +24,27 @@ namespace XmlServer
     {
         public void Start()
         {
-            TcpListener serverListener = new TcpListener(IPAddress.Loopback, 10002);
+            TcpListener serverListener = new TcpListener(IPAddress.Loopback, 8);
             serverListener.Start();
             Console.WriteLine("Server startet ...");
 
             while (true)
             {
-                TcpClient client = serverListener.AcceptTcpClient();
-                NetworkStream connectToClientStream = client.GetStream();
-                StreamReader xmLfromClientReader = new StreamReader(connectToClientStream);
+                using (TcpClient client = serverListener.AcceptTcpClient())
+                using (NetworkStream connectToClientStream = client.GetStream())
+                using (StreamReader xmLfromClientReader = new StreamReader(connectToClientStream))
+                {
+                    //String incomingString = xmLfromClientReader.ReadLine();
 
-                Console.WriteLine($"Printer xml-string modtaget fra Client: {xmLfromClientReader}");
+                    //new XmlSerializer(typeof(Car).IsSerializable(Console.Out, incomingString));
 
-                XmlSerializer xs = new XmlSerializer(typeof(Car));
-                Car tempCar = (Car)xs.Deserialize(xmLfromClientReader);
-                Console.WriteLine(tempCar);
+                    //Console.WriteLine($"Printer xml-string modtaget fra Client: \n{xmLfromClientReader.ReadLine()} \n{incomingString}");
+
+                    XmlSerializer xs = new XmlSerializer(typeof(Car));
+                    Car tempCar = (Car)xs.Deserialize(xmLfromClientReader);
+                    Console.WriteLine($"{tempCar.Model} {tempCar.Color} {tempCar.RegNumber}");
+                }
+
             }
         }
     }
