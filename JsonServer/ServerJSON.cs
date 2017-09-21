@@ -35,14 +35,10 @@ namespace JsonServer
                 {
                     String incomingString = jsonfromClient.ReadLine();
 
-                    //new XmlSerializer(typeof(Car).IsSerializable(Console.Out, incomingString));
-
-                    //Console.WriteLine($"Printer JSON-string modtaget fra Client: \n{jsonfromClient.ReadToEnd()} \n{incomingString}");
-
                     Car jsonCar = JsonConvert.DeserializeObject<Car>(incomingString);
+
                     Console.WriteLine($"Whuuhuu! I recieved at message from Client ... \nModel: {jsonCar.Model} \tColor: {jsonCar.Color} \tLicenseNo: {jsonCar.RegNumber}");
                 }
-
             }
         }
     }

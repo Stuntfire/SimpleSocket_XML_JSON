@@ -36,15 +36,12 @@ namespace XmlServer
                 {
                     String incomingString = xmLfromClientReader.ReadLine();
 
-                    //new XmlSerializer(typeof(Car).IsSerializable(Console.Out, incomingString));
-
                     Console.WriteLine($"Printer xml-string modtaget fra Client: \n{xmLfromClientReader.ReadToEnd()} \n{incomingString}");
 
                     XmlSerializer xs = new XmlSerializer(typeof(Car));
                     Car tempCar = (Car)xs.Deserialize(xmLfromClientReader);
                     Console.WriteLine($"{tempCar.Model} {tempCar.Color} {tempCar.RegNumber}");
                 }
-
             }
         }
     }

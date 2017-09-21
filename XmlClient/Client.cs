@@ -37,9 +37,6 @@ namespace XmlClient
                 XmlSerializer xs = new XmlSerializer(typeof(Car));
 
                 xs.Serialize(clientStreamWriter, xmlCar);
-
-                //clientStreamWriter.WriteLine(xs);
-                //clientStreamWriter.Flush();
             }
         }
     }
