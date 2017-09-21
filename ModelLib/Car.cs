@@ -12,7 +12,13 @@ namespace ModelLib
     /// </summary>
     public class Car
     {
+        /// <summary>
+        /// Her sættes bilens model navn, fx Tesla el. Toyota.
+        /// </summary>
         private string model;
+        /// <summary>
+        /// Her sættes bilens model navn, fx Tesla el. Toyota.
+        /// </summary>
         public string Model
         {
             get { return model; }

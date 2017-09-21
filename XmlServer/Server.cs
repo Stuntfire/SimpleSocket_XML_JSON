@@ -34,11 +34,11 @@ namespace XmlServer
                 using (NetworkStream connectToClientStream = client.GetStream())
                 using (StreamReader xmLfromClientReader = new StreamReader(connectToClientStream))
                 {
-                    //String incomingString = xmLfromClientReader.ReadLine();
+                    String incomingString = xmLfromClientReader.ReadLine();
 
                     //new XmlSerializer(typeof(Car).IsSerializable(Console.Out, incomingString));
 
-                    //Console.WriteLine($"Printer xml-string modtaget fra Client: \n{xmLfromClientReader.ReadLine()} \n{incomingString}");
+                    Console.WriteLine($"Printer xml-string modtaget fra Client: \n{xmLfromClientReader.ReadToEnd()} \n{incomingString}");
 
                     XmlSerializer xs = new XmlSerializer(typeof(Car));
                     Car tempCar = (Car)xs.Deserialize(xmLfromClientReader);
