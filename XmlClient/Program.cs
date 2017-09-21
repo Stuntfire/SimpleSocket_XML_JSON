@@ -10,6 +10,9 @@ namespace XmlClient
     {
         static void Main(string[] args)
         {
+            Client client = new Client();
+            client.Start();
+            Console.ReadLine();
         }
     }
 }
